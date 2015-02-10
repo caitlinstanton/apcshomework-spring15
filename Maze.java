@@ -24,6 +24,10 @@ public class Maze {
     private char[][] board;
     private int maxX;
     private int maxY;
+    private char wall = ' ';
+    private char exit = '$';
+    private char path = '#';
+    private char me = 'C';
 
     public Maze() {
     maxX=40;
@@ -58,11 +62,27 @@ public class Maze {
 	
 	return s;
     }
+
+    public void solve(int x, int y) {
+	if (board[x][y] == wall) {
+	    return;
+	}
+	if (board[x][y] == exit) {
+	    System.out.println(this);
+	    System.exit(0);
+	}
+	System.out.println(this);
+	board[x][y] = me;
+	solve(x+1,y);
+	solve(x-1,y);
+	solve(x,y+1);
+	solve(x,y-1);
+    }
     
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
-    
+	m.solve(1,1);
     }
     
 }
