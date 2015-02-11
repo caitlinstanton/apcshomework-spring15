@@ -13,6 +13,14 @@ Solve(x,y) {
                       Solve(x,y+1)
                       Solve(x,y-1)
 }
+
+Path-finding
+Search
+Blind search: have no info about the maze
+Depth first search: go as deep down one path as you can before going back
+State space search- state: state of existence in the world
+                  : search where you attempt to get to another state until you 
+		    reach the end
 */
 
 
@@ -28,7 +36,14 @@ public class Maze {
     private char exit = '$';
     private char path = '#';
     private char me = 'C';
-    private char visited = '@';
+    private char visited = '.';
+    private boolean solved = false;
+
+    public void delay(int n){
+	try {
+	    Thread.sleep(n);
+	} catch (Exception e) {}
+    }
 
     public Maze() {
     maxX=40;
@@ -65,27 +80,29 @@ public class Maze {
     }
 
     public void solve(int x, int y) {
-	try {
-	    Thread.sleep(100);
-	} catch (Exception e) {
-	}
-	if (board[x][y] == wall || board[x][y] == me || board[x][y] == visited) {
+	if (board[x][y] == wall ||
+	    board[x][y] == me ||
+	    board[x][y] == visited ||
+	    solved) {
 	    return;
 	}
 	if (board[x][y] == exit) {
 	    System.out.println(this);
-	    System.exit(0);
+	    solved = true;
 	}
 	if (board[x][y] != path) {
 	    return;
 	}
+	delay(100);
 	System.out.println(this);
 	board[x][y] = me;
 	solve(x+1,y);
 	solve(x-1,y);
 	solve(x,y+1);
 	solve(x,y-1);
-	board[x][y] = visited;
+	if (!solved) {
+	    board[x][y] = visited;
+	}
     }
     
     public static void main(String[] args){
