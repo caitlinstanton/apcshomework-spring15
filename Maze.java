@@ -1,3 +1,36 @@
+/*
+BASE CASE: hit a wall
+           get to the end
+
+Don't move to the right--recursively call to go to the right
+Solve(x,y) -- Solve(x+1,y)
+
+Solve(x,y) {
+           Done if B[x][y] = exit
+           Return to previous strp if B[x][y] = wall
+           Otherwise: Solve(x+1,y)
+                      Solve(x-1,y)
+                      Solve(x,y+1)
+                      Solve(x,y-1)
+}
+
+Path-finding
+Search
+Blind search: have no info about the maze
+Depth first search: go as deep down one path as you can before going back
+State space search- state: state of existence in the world
+                  : search where you attempt to get to another state until you 
+		    reach the end
+Implicit data structure: nodes not created in the program; nodes created/lost so
+                         that a graph exists over the course of the program
+Explicit data structure: maze program; maze created by us, explicitly
+*/
+
+
+
+import java.io.*;
+import java.util.*;
+
 public class Maze {
     private char[][] board;
     private int maxX;
