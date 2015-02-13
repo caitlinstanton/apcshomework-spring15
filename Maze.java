@@ -24,6 +24,12 @@ State space search- state: state of existence in the world
 Implicit data structure: nodes not created in the program; nodes created/lost so
                          that a graph exists over the course of the program
 Explicit data structure: maze program; maze created by us, explicitly
+
+System.out.printf()--prints everything on the same line
+                   --can set placeholder with %s (string), %d (int), %f (float/double)
+		   System.out.printf("Hello %s earth", "middle");
+		        --prints "Hello middle earth"
+		   --%n_s/d/f -- leaves n number of spaces for each string, int, float
 */
 
 
