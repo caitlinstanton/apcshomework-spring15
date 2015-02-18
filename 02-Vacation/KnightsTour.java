@@ -2,75 +2,75 @@ import java.io.*;
 import java.util.*;
 
 public class KnightsTour {
+
+    private int dimension;
     private int[][] board;
-    private int numX;
-    private int numY;
-    private int space = 0;
-    private int moves = 0;
-    private boolean solved = false;
+    private Scanner sc;
+    private boolean solved = false; 
+   
+    public KnightsTour() {
+	sc = new Scanner(System.in);
+        System.out.print("What do you want the dimensions to be? ");
+	dimension = Integer.parseInt(sc.nextLine());
 
-    public void delay(int n){
-	try {
-	    Thread.sleep(n);
-	} catch (Exception e) {}
-    }
-    
-    public KnightsTour(int n) {
-	int numX = n;
-	int numY = n;
-	board = new int[numX][numY];
-	for (int i = 0; i < numX; i++) {
-	    for (int j = 0; j < numY; j++) {
-		board[i][j] = space;
+	int maxX = dimension + 4;
+	int maxY = dimension +4;
+	board = new int[maxX][maxY];
+	for (int y = 0; y < maxY; y++) {
+	    if (y < 2 || y >= maxY - 2) {
+		for (int x = 0; x < maxX; x++) {
+		    board[y][x] = -1;
+		}
+	    } else {
+		board[y][0] = -1;
+		board[y][1] = -1;
+		board[y][maxX - 2] = -1;
+		board[y][maxX - 1] = -1;
 	    }
 	}
-	
-    }
-    
-    public String toString() {
-	String s = "[2J\n";
-	for (int y=0;y<numY;y++){
-	    for (int x=0;x<numX;x++){
-		s = s + board[x][y];
-	    }
-	    s=s+"\n";
-	}
-	return s;
     }
 
-    public void solve(int x, int y) {
-	if (board[x][y] != space || solved) {
-	    moves = moves - 1;
+    public void printSolution() {
+	for (int y = 0; y < board.length; y++){
+	    for (int x = 0; x < board[0].length; x++) {
+		if (board[y][x] != -1) {
+		    System.out.printf("|%2d", board[y][x]);
+		    if (x == dimension + 1) {
+			System.out.printf("|");
+		    }
+		}
+	    }
+	    System.out.printf("\n");
+	}
+    }
+    
+    public void solve(int x, int y, int moves) {
+        if (board[y][x] != 0 || solved) {
 	    return;
 	}
-	if (moves == 25) {
-	    System.out.println(this);
+	board[y][x] = moves;
+	if (moves == (dimension * dimension)) {
+	    printSolution();
 	    solved = true;
-	    System.out.println("YESH");
 	}
-	delay(100);
-	System.out.println(this);
-	//board[x][y] = me;
-	try {
-	    solve(x+2,y+1);
-	    solve(x+2,y-1);
-	    solve(x-2,y+1);
-	    solve(x-2,y-1);
-	    solve(x+1,y+2);
-	    solve(x-1,y+2);
-	    solve(x+1,y-2);
-	    solve(x-1,y-2);
-	} catch (Exception e) {}
+	solve(x+1, y+2, moves+1);
+	solve(x-1, y+2, moves+1);
+	solve(x+1, y-2, moves+1);	
+	solve(x-1, y-2, moves+1);
+	solve(x+2, y+1, moves+1);
+	solve(x-2, y+1, moves+1);
+	solve(x+2, y-1, moves+1);
+	solve(x-2, y-1, moves+1);
 	if (!solved) {
-	    board[x][y] = moves;
+	    moves = moves - 1;
+	    board[y][x] = 0;
 	}
-	moves = moves + 1;
     }
-    
+
+
     public static void main(String[] args){
-	KnightsTour k = new KnightsTour(5);
-	System.out.println(k);
-	k.solve(1,1);
+	KnightsTour k = new KnightsTour();
+	k.solve(2,2,1);
     }
     
 }
