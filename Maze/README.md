@@ -1,3 +1,4 @@
+<h2> MAZE PSEUDOCODE </h2>
 - BASE CASE: hit a wall or get to the end
 
 - Don't move to the right--recursively call to go to the right
@@ -12,7 +13,7 @@
                       -Solve(x,y-1)
 }
 
-<H2> TYPES OF SEARCHES <h2>
+<H2> TYPES OF SEARCHES </h2>
 - Path-finding
 - Search
 - Blind search: have no info about the maze
@@ -23,7 +24,7 @@
                          that a graph exists over the course of the program
 - Explicit data structure: maze program; maze created by us, explicitly
 
-<h2> FORMATTING <h2>
+<h2> FORMATTING </h2>
 - System.out.printf()--prints everything on the same line
                      --can set placeholder with %s (string), %d (int), %f (float/double)
 		   - System.out.printf("Hello %s earth", "middle");
