@@ -7,3 +7,4 @@
 <h2> Big O notation </h2>
 - Function f(n) is said to be O(g(n)), (Order( g(n)), or Big-o g(n)
 - Applies if there exists some constant k such that k(g(n)) > f (n) over the long term
+- "Tight" upper bound
