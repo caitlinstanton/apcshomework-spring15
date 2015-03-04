@@ -8,7 +8,7 @@
     - Done if B[x][y] = exit
     - Return to previous step if B[x][y] = wall
     - Otherwise: 
-	- Solve(x+1,y)
+	 - Solve(x+1,y)
         - Solve(x-1,y)
         - Solve(x,y+1)
         - Solve(x,y-1)
