@@ -5,12 +5,12 @@
     -Solve(x,y) -- Solve(x+1,y)
 
 - Solve(x,y) {
-           -Done if B[x][y] = exit
-           -Return to previous strp if B[x][y] = wall
-           -Otherwise: Solve(x+1,y)
-                      -Solve(x-1,y)
-                      -Solve(x,y+1)
-                      -Solve(x,y-1)
+           - Done if B[x][y] = exit
+           - Return to previous step if B[x][y] = wall
+           - Otherwise: Solve(x+1,y)
+                      - Solve(x-1,y)
+                      - Solve(x,y+1)
+                      - Solve(x,y-1)
 }
 
 <H2> TYPES OF SEARCHES </h2>
