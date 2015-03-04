@@ -20,7 +20,7 @@
 - Blind search: have no info about the maze
 - Depth first search: go as deep down one path as you can before going back
 - State space search: search where you attempt to get to another state until you reach the end
-        - state: state of existence in the world
+       - state: state of existence in the world
 - Implicit data structure: nodes not created in the program; nodes created/lost so
                          that a graph exists over the course of the program
 - Explicit data structure: maze program; maze created by us, explicitly
