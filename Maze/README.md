@@ -2,15 +2,16 @@
 - BASE CASE: hit a wall or get to the end
 
 - Don't move to the right--recursively call to go to the right
-    -Solve(x,y) -- Solve(x+1,y)
+    - Solve(x,y) -- Solve(x+1,y)
 
 - Solve(x,y) {
         - Done if B[x][y] = exit
         - Return to previous step if B[x][y] = wall
-        - Otherwise: Solve(x+1,y)
-                - Solve(x-1,y)
-                - Solve(x,y+1)
-                - Solve(x,y-1)
+        - Otherwise: 
+	      - Solve(x+1,y)
+              - Solve(x-1,y)
+              - Solve(x,y+1)
+              - Solve(x,y-1)
 }
 
 <H2> TYPES OF SEARCHES </h2>
@@ -26,9 +27,8 @@
 
 <h2> FORMATTING </h2>
 - System.out.printf()--prints everything on the same line
-                     --can set placeholder with %s (string), %d (int), %f (float/double)
-		   - System.out.printf("Hello %s earth", "middle");
-		        --prints "Hello middle earth"
-		   --%n_s/d/f -- leaves n number of spaces for each string, int, float
+                     - can set placeholder with %s (string), %d (int), %f (float/double)
+		     - System.out.printf("Hello %s earth", "middle"); -- prints "Hello middle earth"
+		     - %n_s/d/f -- leaves n number of spaces for each string, int, float
 
 
