@@ -17,29 +17,21 @@ public class moreEfficient {
 		B.add(n.get(i));
 	    }
 	}
-        return merge(mergeSort(A), mergeSort(B));
+        return merge(mergeSort(left), mergeSort(right));
     }
     
     public ArrayList<Integer> merge(ArrayList<Integer> A, ArrayList<Integer> B) {
 	    ArrayList<Integer> mergedList = new ArrayList<Integer>();
 	    int iA = 0;
 	    int iB = 0;
-	    while (iA < A.size() && iB < B.size()){
-		if (A.get(iA) <= B.get(iB)){
+	    while (iA < A.size() && iB < B.size()) {
+		if(A.get(iA) <= B.get(iB)) {
 		    mergedList.add(A.get(iA));
 		    iA++;
-		} else{
+		} else if(B.get(iB) < A.get(iA)) {
 		    mergedList.add(B.get(iB));
 		    iB++;
 		}
-	    }
-	    while (iA < A.size()){
-		mergedList.add(A.get(iA));
-		iA++;
-	    }
-	    while (iB < B.size()){
-		mergedList.add(B.get(iB));
-		iB++;
 	    }
 	    return mergedList;
     }
