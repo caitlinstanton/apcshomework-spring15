@@ -2,7 +2,54 @@ import java.io.*;
 import java.util.*;
 
 public class StuySort {
-	
+
+//ARRAY
+    public int[] merge(int[] A, int[] B){
+	int[] mergedList = new int[A.length + B.length];
+	int iA = 0;
+	int iB = 0;
+	for(int i = 0; i < A.length + B.length;i++){
+	    if(iA < A.length && iB < B.length){
+		if(A[iA] <= B[iB]){
+		    mergedList[i] = A[iA];
+		    iA++;
+		} else {
+		    mergedList[i] = B[iB];
+		    iB++;
+		}
+	    } else if (iA < A.length){
+		mergedList[i] = A[iA];
+		iA++;
+	    } else {
+		mergedList[i] = B[iB];
+		iB++;
+	    }
+	}
+	return mergedList;
+    }
+
+    public int[] mergeSort(int[] n){
+     	int[] A = new int[n.length/2];
+	int[] B = new int[n.length - n.length/2];
+	if(n.length <= 1){
+	    return n;
+	} else {
+	    int iB = 0;
+	    for(int i = 0; i < n.length; i++){ //splits array
+		if(i < n.length/2){
+		    A[i] = n[i];
+		}
+		else {
+		    B[iB] = n[i];
+		    iB++;
+		}
+	    }
+	    n = merge(mergeSort(A),mergeSort(B));
+	}
+	return n;
+    }
+    
+//ARRAYLIST
     public ArrayList<Integer> mergeSort(ArrayList<Integer> n) {
 	if(n.size() <= 1) {
 	    return n;
@@ -47,15 +94,24 @@ public class StuySort {
 
     
     public static void main(String[] args) {
+    	StuySort m = new StuySort();
+    	
 	ArrayList<Integer> A = new ArrayList<Integer>();
 	Random rn = new Random();
 	for (int i = 0; i < 10; i++) {
 	    A.add(rn.nextInt(15));
 	}
-        StuySort m = new StuySort();
 	System.out.println("Array: " + A);
 	System.out.println("Sorted: " + m.mergeSort(A));
 	
+	int[] list = new int[10];
+	Random rn = new Random();
+	for (int i = 0; i < list.length; i++) {
+	    list[i] = rn.nextInt(20);
+	}
+	System.out.println("Original: " + Arrays.toString(list));
+	list = m.mergeSort(list);
+	System.out.println("Sorted: " + Arrays.toString(list));
     }
 	
 }
