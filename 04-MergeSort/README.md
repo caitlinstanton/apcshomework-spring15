@@ -8,3 +8,5 @@
 - Function f(n) is said to be O(g(n)), (Order( g(n)), or Big-o g(n)
 - Applies if there exists some constant k such that k(g(n)) > f (n) over the long term
 - "Tight" upper bound
+- EXAMPLE: x^4 + 3x^3 + 2x + 7
+       - x^4 has the most power over the function, so it can be defined as: O(x^4)
