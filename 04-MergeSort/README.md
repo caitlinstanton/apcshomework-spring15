@@ -1,6 +1,6 @@
 <h2> MERGESORT NOTES </h2>
 - There are log2(n) splits for the entirety of the original list
-       -(i.e. list is 32, there will be 5 splits)
+       - (i.e. list is 32, there will be 5 splits)
 - Each split loops through the entire list (copies one half to one list and the other half to a second list), giving it a runtime of n
 - The sum of each split (merge) -- runtime of n
 
