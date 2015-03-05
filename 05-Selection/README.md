@@ -14,6 +14,7 @@
 
 <h2>Selection</h2>
 - In sorted list, the kth smallest element is at L[k]
+<h3> Steps to find kth smallest element </h3>
 1. Choose a pivot value (random number--in our case 9, but it can be any value)
 	- List L: [8, 3, 9, 6, 4, 12, 13, 21, 2, 14]
 2. Partition the list by rearranging it around the pivot value
