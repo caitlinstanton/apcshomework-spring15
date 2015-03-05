@@ -8,7 +8,6 @@
 - }
 
 
-O(nlog(n))
-
-tmp = msort(L);
-return tmp[k]
+<h2> O(nlog(n)) </h2>
+- tmp = msort(L);
+- return tmp[k]
