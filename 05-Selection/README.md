@@ -14,13 +14,30 @@
 
 <h2>Selection</h2>
 - In sorted list, the kth smallest element is at L[k]
+- Parameters: list L, int k (kth element), upper and lower bounds of section of list we're looking for
+	- FIRST RUNTHROUGH:
+		- Lower bound = 0
+		- Upper bound = length - 1
 <h3> Steps to find kth smallest element </h3>
 1. Choose a pivot value (random number--in our case 9, but it can be any value)
 	- List L: [8, 3, 9, 6, 4, 12, 13, 21, 2, 14]
-2. Partition the list by rearranging it around the pivot value
-	- Sort list around 9 (i.e. is 8 smaller than 9? Move it to the left of 9)
-	- End up with [8, 3, 6, 4, 2, 9, 12, 13, 21, 14]
-	- 9 is the 5th element in the list
-3. If we're looking for the kth element, you know vaguely where it is in relation to the pivot number. Either you're done is the pivot value is the smallest, or call select on the appropriate section of the rearranged list
+2. Swap pivot value with the value at the upper bound
+3. Adjust variables
+	- LowerBound = low
+	- HigherBound = HigherBound - 1
+4. while(LowerBound < HigherBound)
+	- If L[LowerBound] < pivot
+		- LowerBound++
+		- else {swap L[LowerBound] and L[HigherBound]
+		- HigherBound--
+	- REPEAT
+5. Swap pivot with first right side element
+6. If the pivot is at index k, then you're done
+	- else
+		- select(A,k,L,pivot-1) or select(A,k,pivot+1,H)
+			- depends on where pivot is in relation to k
+
+- If we're looking for the kth element, you know vaguely where it is in relation to the pivot number. Either you're done is the pivot value is the smallest, or call select on the appropriate section of the rearranged list
 	- Looking for the 3rd smallest element--find the element of index 3 in the list before 9
 	- Sort elements around that number (in our case, 4)
+	
