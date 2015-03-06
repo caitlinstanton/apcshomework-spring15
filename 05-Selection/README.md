@@ -34,7 +34,7 @@
 5. Swap pivot with first right side element
 6. If the pivot is at index k, then you're done
 	- else
-		- select(A,k,L,pivot-1) or select(A,k,pivot+1,H)
+		- select(A,k,L,pivotIndex-1) or select(A,k,pivotIndex+1,H)
 			- depends on where pivot is in relation to k
 
 - If we're looking for the kth element, you know vaguely where it is in relation to the pivot number. Either you're done is the pivot value is the smallest, or call select on the appropriate section of the rearranged list
