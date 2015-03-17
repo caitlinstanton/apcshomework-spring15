@@ -1,7 +1,16 @@
 public class LList {
     
-    private Node l = null;
+    private Node l;
+    private int len;
     
+    public LList() {
+	l = new Node();
+	len = 0;
+	//ADDING THIS NEW, EMPTY NODE AT THE BEGINNING MEANS THAT YOU DON'T
+	//REQUIRE AN IF STATEMENT TO CHECK IF YOU ARE ADDING TO THE VERY FRONT
+	//OF THE LIST, SINCE THERE WILL ALWAYS BE A (NULL) ELEMENT BEFORE IT
+    }
+
     public void add(String s){
 	Node tmp = new Node(s);
 	tmp.setNext(l);
