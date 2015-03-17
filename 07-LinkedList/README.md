@@ -5,3 +5,11 @@
 - Kind of like a circular list:
   - Alice then Joseph then Michael then David then Mariya then Dillon then Alice then Joseph then Michael then David then Mariya then Dillon then Alice...
   - Like people taking turns in a game
+
+<h2>Assignment</h2>
+- Empty list has dummy node
+- Keep track of length in instance variable
+- add(string) -- still adds to front
+- add(index,string)
+- Change find(index) to get(index)
+- remove(index)
