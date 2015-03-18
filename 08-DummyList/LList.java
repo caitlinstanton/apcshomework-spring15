@@ -4,13 +4,13 @@ public class LList {
     private int len;
     
     public LList() {
-	start = new Node("");
+	start = new Node(0);
 	end = null;
 	start.setNext(end);
 	len = 0;
     }
 
-    public void add(String s){
+    public void add(int s){
 	Node tmp = new Node(s);
         start.setNext(tmp);
 	tmp.setNext(end);
@@ -18,10 +18,10 @@ public class LList {
 	len++;
     }
 
-    public String get(int n) {
+    public int get(int n) {
 	Node tmp = start;
 	int counter = -1;
-	String s = "";
+        int s = 0;
 	while(counter < n && tmp != null) {
 	    tmp = tmp.getNext();
 	    s = tmp.getData();
@@ -30,12 +30,12 @@ public class LList {
 	return s;
     }
 
-    public void add(int n, String s) {
+    public void add(int n, int s) {
 	Node added = new Node(s);
 	Node before = start;
 	int i = 0;
 	while (i < n && before != null) {
-	    if (!(before.getData().equals(get(n-1)))) {
+	    if (!(before.getData() == get(n-1))) {
 		before = before.getNext();
 	    }
 	    i++;
@@ -44,7 +44,7 @@ public class LList {
 	Node after = start;
 	int j = 0;
 	while (j < n && before != null) {
-	    if (!(after.getData().equals(get(n)))) {
+	    if (!(after.getData() == get(n))) {
 		after = after.getNext();
 	    }
 	    j++;
@@ -64,7 +64,7 @@ public class LList {
     INCORRECT BECAUSE GET IS MEANT TO RETURN DATA, NOT A NODE
     */
 
-    public String remove(int n) {
+    public int remove(int n) {
 	if (n >= len || n < 0) {
 	    throw new IndexOutOfBoundsException();
 	}
@@ -72,7 +72,7 @@ public class LList {
 	for (int i = 0; i < n-1; i++) {
 	    tmp = tmp.getNext();
 	}
-	String s = tmp.getNext().getData();
+	int s = tmp.getNext().getData();
 	tmp.setNext(tmp.getNext().getNext());
 	return s;
     }

@@ -1,18 +1,18 @@
 public class Node {
 
-    private String data;
+    private int data;
     private Node next;  //kind of like a recursive data structure
 
-    public Node(String s) {
+    public Node(int s) {
 	data = s;
 	next = null;
     }
     
-    public void setData(String s) {
+    public void setData(int s) {
 	data = s;
     }
 
-    public String getData() {
+    public int getData() {
 	return data;
     }
 
@@ -25,7 +25,7 @@ public class Node {
     }
 
     public String toString() {
-	return data;
+	return "" + data;
     }
 
 }

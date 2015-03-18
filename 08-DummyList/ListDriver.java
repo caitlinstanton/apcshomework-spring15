@@ -6,17 +6,17 @@ public class ListDriver{
 	Random r = new Random();
 	LList l = new LList();
 	for (int i = 0; i < 10; i++){
-	    l.add(""+i);
+	    l.add(i);
 	}
 	System.out.println(l);
 	System.out.println(l.get(4));
 	System.out.println(" ");
 
-	l.add(4,"C");
+	l.add(4,98);
 	System.out.println(l);
 	System.out.println(" ");
 
-	l.add(0,"sup");
+	l.add(0,420);
 	System.out.println(l);
 	System.out.println(" ");
 
