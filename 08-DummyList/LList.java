@@ -18,21 +18,37 @@ public class LList {
 	len++;
     }
 
-    public Node get(int n) {
+    public String get(int n) {
 	Node tmp = start;
 	int counter = -1;
+	String s = "";
 	while(counter < n && tmp != null) {
 	    tmp = tmp.getNext();
+	    s = tmp.getData();
 	    counter++;
 	}
-	return tmp;
+	return s;
     }
 
     public void add(int n, String s) {
 	Node added = new Node(s);
-	Node before = get(n - 1);
+	Node before = start;
+	int i = 0;
+	while (i < n && before != null) {
+	    if (!(before.getData().equals(get(n-1)))) {
+		before = before.getNext();
+	    }
+	    i++;
+	}
 	System.out.println(before);
-	Node after = get(n);
+	Node after = start;
+	int j = 0;
+	while (j < n && before != null) {
+	    if (!(after.getData().equals(get(n)))) {
+		after = after.getNext();
+	    }
+	    j++;
+	}
 	System.out.println(after);
 	added.setNext(after);
 	before.setNext(added);	
