@@ -10,13 +10,23 @@ public class ListDriver{
 	}
 	System.out.println(l);
 	System.out.println(l.get(4));
+	System.out.println(" ");
+
 	l.add(4,"C");
 	System.out.println(l);
+	System.out.println(" ");
+
 	l.add(0,"sup");
 	System.out.println(l);
+	System.out.println(" ");
+
 	System.out.println(l.getLength());
-	l.remove(4);
+	System.out.println(" ");
+
+	System.out.println("Element removed: " + l.remove(4));
 	System.out.println(l);
+	System.out.println(" ");
+
 	System.out.println(l.getLength());
     }
 		
