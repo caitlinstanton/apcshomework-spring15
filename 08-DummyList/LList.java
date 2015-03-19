@@ -3,11 +3,9 @@ public class LList {
     private Node start,end;
     private int len;
     
-    public LList() {
-	start = new Node(0);
-	end = null;
-	start.setNext(end);
-	len = 0;
+    public LList2 getLList2() {
+	LList2 llist2 = new LList2(start);
+	return llist2;
     }
 
     public void add(int s){
@@ -15,6 +13,10 @@ public class LList {
         start.setNext(tmp);
 	tmp.setNext(end);
 	end = tmp;
+	/*
+	  tmp.setNext(start.getNext());
+	  start.setNext(tmp);
+	*/
 	len++;
     }
 

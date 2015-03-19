@@ -1,0 +1,9 @@
+public class LList2 {
+
+    private Node l;
+    
+    public LList2(Node n) {
+	l = n;
+    }
+
+}
