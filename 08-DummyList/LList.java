@@ -18,40 +18,30 @@ public class LList {
 	len++;
     }
 
-    public int get(int n) {
-	Node tmp = start;
-	int counter = -1;
-        int s = 0;
-	while(counter < n && tmp != null) {
-	    tmp = tmp.getNext();
-	    s = tmp.getData();
-	    counter++;
-	}
-	return s;
-    }
 
     public void add(int n, int s) {
 	Node added = new Node(s);
 	Node before = start;
-	int i = 0;
-	while (i < n && before != null) {
-	    if (!(before.getData() == get(n-1))) {
-		before = before.getNext();
-	    }
-	    i++;
+	for (int i = 0; i < n; i++) {
+	    before = before.getNext();
 	}
-	System.out.println(before);
-	Node after = start;
-	int j = 0;
-	while (j < n && before != null) {
-	    if (!(after.getData() == get(n))) {
-		after = after.getNext();
+	added.setNext(before.getNext());
+	before.setNext(added);
+	len++;
+    }
+
+    public int get(int n) {
+	if (n >= len || n < 0) {
+	    throw new IndexOutOfBoundsException();
+	} else {
+	    Node tmp = start;
+	    int counter = -1;
+	    while(counter < n && counter < len) {
+		tmp = tmp.getNext();
+		counter++;
 	    }
-	    j++;
+	    return tmp.getData();
 	}
-	System.out.println(after);
-	added.setNext(after);
-	before.setNext(added);	
     }
 
     /*
@@ -64,20 +54,20 @@ public class LList {
     INCORRECT BECAUSE GET IS MEANT TO RETURN DATA, NOT A NODE
     */
 
-    public int remove(int n) {
-	if (n >= len || n < 0) {
-	    throw new IndexOutOfBoundsException();
-	}
+    public boolean remove(int n) {
 	Node tmp = start;
-	for (int i = 0; i < n-1; i++) {
+	for (int i = 0; i < len; i++) {
+	    if(tmp.getNext().getData() == n) {
+		tmp.setNext(tmp.getNext().getNext());
+		len--;
+		return true;		   
+	    }
 	    tmp = tmp.getNext();
 	}
-	int s = tmp.getNext().getData();
-	tmp.setNext(tmp.getNext().getNext());
-	return s;
+        return false;
     }
     
-    public int getLength() {
+    public int size() {
 	return len;
     }
     
