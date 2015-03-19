@@ -13,6 +13,7 @@ public class ListDriver{
     
     public static void main(String[] args) {
 	Random rn = new Random();
+	
 	long start, elapsed;
 	LList l = new LList();
 	LinkedList LL = new LinkedList();
@@ -47,8 +48,12 @@ public class ListDriver{
 	}
 	elapsed = System.currentTimeMillis()-start;
 	System.out.println("Built-in Linked List: " + elapsed);
-
+	
 	/*
+	LList l = new LList();
+	for (int i = 0; i < 10; i++) {
+	    l.add(i);
+	}
 	System.out.println(l);
 	System.out.println("The 0th element is: " + l.get(0));
 	l.add(4,98);
@@ -59,7 +64,7 @@ public class ListDriver{
 	System.out.println("Element removed: " + l.remove(4));
 	System.out.println(l);
 	System.out.println("Length = " + l.size());
-	*/
+	*/	
     }
 		
 }

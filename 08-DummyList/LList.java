@@ -55,6 +55,7 @@ public class LList {
     */
 
     public boolean remove(int n) {
+	/*
 	Node tmp = start;
 	for (int i = 0; i < len; i++) {
 	    if(tmp.getNext().getData() == n) {
@@ -65,6 +66,19 @@ public class LList {
 	    tmp = tmp.getNext();
 	}
         return false;
+	*/
+	Node tmp = start.getNext();
+	Node t2 = tmp;
+	while (tmp != null) {
+	    if (tmp.getData() == n) {
+		t2.setNext(tmp.getNext());
+		len--;
+		return true;
+	    }
+	    t2 = tmp;
+	    tmp = tmp.getNext();
+	}
+	return false;
     }
     
     public int size() {
