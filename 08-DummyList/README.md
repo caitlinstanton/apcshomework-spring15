@@ -1,0 +1,4 @@
+- for each loop
+  - for (Variable n : dataSet l) {
+    - goes through each element of l, performing the code inside
+  - }
