@@ -101,7 +101,7 @@ public class ListDriver{
 	    System.out.println(i.next());
 	while (i2.hasNext())
 	    System.out.println(i2.next());
-
+	System.out.println();
 
 	//for each loop
 	//STRUCTURE: for (variable : set of data)
