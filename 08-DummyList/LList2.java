@@ -1,4 +1,4 @@
-public class LList2<E> {
+public class LList2<E> implements Iterator<E> {
 
     private Node<E> l;
     
@@ -14,8 +14,17 @@ public class LList2<E> {
 	//Move to next node and return value to 
 	//node before the move
         E s = l.getData();
+	Node<E> val = l;
 	l = l.getNext();
+	remove();
 	return s;
     }
     
+    public void remove() {
+	Node<E> tmp = null;
+	while (tmp != val) {
+	    tmp = tmp.getNext();
+	}
+	tmp.setNext(l);
+    }
 }

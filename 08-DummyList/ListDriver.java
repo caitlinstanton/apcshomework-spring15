@@ -113,5 +113,10 @@ public class ListDriver{
 	    System.out.println(j + ", ");
 	}
 	
+	LList2<Integer> n = new LList2<Integer>();
+	for (int  i = 0; i < 10; i++) {
+	    n.add(i);
+	}
+	System.out.println(n);
     }
 }
