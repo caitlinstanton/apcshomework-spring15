@@ -1,19 +1,19 @@
-public class LList2 {
+public class LList2<E> {
 
-    private Node l;
+    private Node<E> l;
     
-    public LList2(Node n) {
-	l = n.getNext();
+    public LList2(Node<E> n) {
+	l = n;
     }
 
     public boolean hasNext() {
 	return l != null;
     }
 
-    public int next() {
+    public E next() {
 	//Move to next node and return value to 
 	//node before the move
-	int s = l.getData();
+        E s = l.getData();
 	l = l.getNext();
 	return s;
     }

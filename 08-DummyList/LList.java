@@ -1,15 +1,15 @@
-public class LList {
+public class LList<E> {
     
-    private Node start,end;
+    private Node<E> start,end;
     private int len;
     
     public LList2 getLList2() {
-	LList2 llist2 = new LList2(start);
+	LList2<E> llist2 = new LList2<E>(start);
 	return llist2;
     }
 
-    public void add(int s){
-	Node tmp = new Node(s);
+    public void add(E s){
+	Node<E> tmp = new Node<E>(s);
         start.setNext(tmp);
 	tmp.setNext(end);
 	end = tmp;
@@ -21,9 +21,9 @@ public class LList {
     }
 
 
-    public void add(int n, int s) {
-	Node added = new Node(s);
-	Node before = start;
+    public void add(E n, E s) {
+	Node<E> added = new Node<E>(s);
+	Node<E> before = start;
 	for (int i = 0; i < n; i++) {
 	    before = before.getNext();
 	}
@@ -32,11 +32,11 @@ public class LList {
 	len++;
     }
 
-    public int get(int n) {
+    public E get(E n) {
 	if (n >= len || n < 0) {
 	    throw new IndexOutOfBoundsException();
 	} else {
-	    Node tmp = start;
+	    Node<E> tmp = start;
 	    int counter = -1;
 	    while(counter < n && counter < len) {
 		tmp = tmp.getNext();
@@ -56,7 +56,7 @@ public class LList {
     INCORRECT BECAUSE GET IS MEANT TO RETURN DATA, NOT A NODE
     */
 
-    public boolean remove(int n) {
+    public boolean remove(E n) {
 	/*
 	Node tmp = start;
 	for (int i = 0; i < len; i++) {
@@ -69,8 +69,8 @@ public class LList {
 	}
         return false;
 	*/
-	Node tmp = start.getNext();
-	Node t2 = tmp;
+	Node<E> tmp = start.getNext();
+	Node<E> t2 = tmp;
 	while (tmp != null) {
 	    if (tmp.getData() == n) {
 		t2.setNext(tmp.getNext());
@@ -89,7 +89,7 @@ public class LList {
     
     public String toString(){
 	String s = "empty --> ";
-	Node tmp;
+	Node<E> tmp;
 	for (tmp = start.getNext(); tmp != null; tmp = tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}

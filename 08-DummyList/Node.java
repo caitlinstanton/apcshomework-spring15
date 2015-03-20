@@ -1,26 +1,31 @@
-public class Node {
+public class Node<E> {
 
-    private int data;
-    private Node next;  //kind of like a recursive data structure
+    private E data;
+    private Node<E> next;  //kind of like a recursive data structure
 
-    public Node(int s) {
-	data = s;
+    public Node() {
+	data = null;
 	next = null;
     }
     
-    public void setData(int s) {
+    public Node(E s) {
+	data = s;
+	next = null;
+    }
+
+    public void setData(E s) {
 	data = s;
     }
 
-    public int getData() {
+    public E getData() {
 	return data;
     }
 
-    public void setNext(Node n) {
+    public void setNext(Node<E> n) {
 	next = n;
     }
     
-    public Node getNext() {
+    public Node<E> getNext() {
 	return next;
     }
 
