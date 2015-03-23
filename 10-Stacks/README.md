@@ -13,3 +13,7 @@
 
 <h3> (Sometimes Necessary) </h3>
 - size() --> returns size of stack
+
+<h1>Our Program</h1>
+- top (null) <-- node <-- node <-- bottom (empty)
+- Ultimately do generics
