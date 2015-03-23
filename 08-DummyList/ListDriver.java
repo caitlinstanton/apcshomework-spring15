@@ -12,6 +12,7 @@ LList
 public class ListDriver{
     
     public static void main(String[] args) {
+	/*
 	Random rn = new Random();
 	long start, elapsed;
 	LList l = new LList();
@@ -48,7 +49,18 @@ public class ListDriver{
 	elapsed = System.currentTimeMillis()-start;
 	System.out.println("Built-in Linked List: " + elapsed);
 
-	/*
+	LList l = new LList();
+	for (int i = 0; i < 10; i++) {
+	    l.add(i);
+	}
+
+	//NON-JAVA WAY OF PRINTING A LIST INSTEAD OF THE TOSTRING() METHOD
+	Node t = start.getNext();
+	while (t != null) {
+	    System.out.println(t.getData());
+	    t = t.getNext();
+	}
+
 	System.out.println(l);
 	System.out.println("The 0th element is: " + l.get(0));
 	l.add(4,98);
@@ -60,6 +72,51 @@ public class ListDriver{
 	System.out.println(l);
 	System.out.println("Length = " + l.size());
 	*/
+
+	//LList<String> l = new LList<String>();
+	//LList<Integer> l2 = new LList<Integer>();
+	//ArrayList<String> l = new ArrayList<String>();
+        //ArrayList<Integer> l2 = new ArrayList<Integer>();
+	LinkedList<String> l = new LinkedList<String>();
+	LinkedList<Integer> l2 = new LinkedList<Integer>();
+
+	l.add("Hello");
+	l.add("world");
+	l.add("abc");
+	l.add("something");
+	l.add("else");
+	
+	System.out.println(l);
+
+	for (int i=0;i < 5; i++){
+	    l2.add(i);
+	}
+	
+	System.out.println(l2);
+	System.out.println();
+
+	Iterator<String> i = l.iterator();
+	Iterator<Integer> i2 = l2.iterator();
+	while (i.hasNext())
+	    System.out.println(i.next());
+	while (i2.hasNext())
+	    System.out.println(i2.next());
+	System.out.println();
+
+	//for each loop
+	//STRUCTURE: for (variable : set of data)
+	for (String s : l) {
+	    System.out.println(s + ", ");
+	}
+	System.out.println();
+	for (int j : l2) {
+	    System.out.println(j + ", ");
+	}
+	
+	LList2<Integer> n = new LList2<Integer>();
+	for (int  i = 0; i < 10; i++) {
+	    n.add(i);
+	}
+	System.out.println(n);
     }
-		
 }
