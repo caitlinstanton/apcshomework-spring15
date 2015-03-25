@@ -8,7 +8,9 @@ public class Driver {
 	n.push(x);
 	System.out.println(n);
 	System.out.println(n.empty());
-	System.out.println(n.top());
+	System.out.println(n.peek());
+	System.out.println(n.pop());
+	System.out.println(n);
     }
 
 }

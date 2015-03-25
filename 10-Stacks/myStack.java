@@ -1,40 +1,40 @@
 public class myStack<E> {
 
-    public Node<E> start,end,pointer;
+    public Node<E> l;
     
     public myStack() {
-	start = new Node("");
-	end = null;
-	pointer = start;
+        l = null;
     }
 
     public void push(E data) {
 	Node<E> tmp = new Node<E>(data);
-	start.setNext(tmp);
-	tmp.setNext(end);
-	start = tmp;
+        tmp.setNext(l);
+	l = tmp;
     }
 
-    //    public E pop() {
-    //
-    // }
+    public E pop() {
+	E tmp = l.getData();
+	l = l.getNext();
+	return tmp;
+    }
 
      public boolean empty() {
-        return pointer.getNext() == null;
+        return l == null;
      }
 
-     public E top() {
-	 return start.getNext().getData();
+     public E peek() {
+	 if (!empty()) {
+	     return l.getData();
+	 }
+	 return null;
      }
 
     public String toString() {
-	String s = "bottom";
+	String s = "TOP";
 	Node tmp;
-	System.out.println("END: "+end);
-	for (tmp = pointer; tmp != null; tmp = tmp.getNext()){
-	    s = s + tmp + " --> ";
+	for (tmp = l; tmp != null; tmp = tmp.getNext()){
+	    s = s + " <-- " + tmp;
 	}
-	s = s + "top";
 	return s;
     }
 
