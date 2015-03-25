@@ -15,5 +15,5 @@
 - size() --> returns size of stack
 
 <h1>Our Program</h1>
-- top (null) <-- node <-- node <-- bottom (empty)
+- top (null) <-- node <-- node
 - Ultimately do generics
