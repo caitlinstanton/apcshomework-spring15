@@ -1,5 +1,7 @@
 import java.lang.Integer;
+
 public class Driver {
+
     public static void main(String[] args) {
 	myQueue<Integer> t = new myQueue<Integer>();
 	System.out.println(t.empty());
