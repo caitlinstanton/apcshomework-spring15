@@ -15,7 +15,7 @@ public class myQueue<E> {
 
     public void enQueue(E e){
 	Node<E> tmp = new Node<E>(e);
-	tmp.setNext(end.getNext() );
+	tmp.setNext(end.getNext());
 	end.setNext(tmp);
     }
 
