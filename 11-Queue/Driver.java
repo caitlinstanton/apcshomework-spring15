@@ -10,10 +10,11 @@ public class Driver {
 	}
 	System.out.println(t);
 	System.out.println(t.empty());
-	System.out.println(t.head());
-	System.out.println(t.deQueue());
+	//System.out.println(t.head());
+	//System.out.println(t.deQueue());
 	System.out.println(t);
 
+	/*
         ArrayQueue s2 = new ArrayQueue();
 	System.out.println("empty: " + s2.empty());
 	for (int i = 0 ; i < 10; i++) {
@@ -25,6 +26,6 @@ public class Driver {
 	System.out.println();
 	System.out.println(s2.deQueue());
 	System.out.println(s2);
-
+	*/
     }
 }

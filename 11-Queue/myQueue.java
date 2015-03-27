@@ -7,16 +7,28 @@ public class myQueue<E> {
 	start = new Node<E>();
 	end = new Node<E>();
 	end.setNext(start);
+	//start.setNext(end);
     }
 
     public boolean empty(){
 	return (end.getNext() == start);
+	//return start == null;
     }
 
     public void enQueue(E e){
 	Node<E> tmp = new Node<E>(e);
 	tmp.setNext(end.getNext());
 	end.setNext(tmp);
+	/*
+	Node<E> tmp = new Node<E>(e);
+	if (start == null) {
+	    start = tmp;
+	    end = tmp;
+	} else {
+	    end.setNext(tmp);
+	    end = tmp;
+        }
+	 */
     }
 
     public E deQueue (){
@@ -29,6 +41,14 @@ public class myQueue<E> {
 	E retval = tmp.getData();
 	before.setNext(start);
 	return retval;
+	/*
+	if (empty()) {
+	   throw EXCEPTION;
+        }
+	E retval = start.getData();
+	start = start.getNext();
+	return retval;
+	*/	   
     }
 
     public E head(){
