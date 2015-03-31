@@ -47,12 +47,12 @@
 - Recursion stack stores how to get back
 
 <h2> Breadth First Search </h2>
--   B
--   C
-- D A E F G
--   H
--   I
--   J K L M
+	-B
+	-C
+     - D A E F G
+	-H
+	-I
+	-J K L M
 - 1. Enqueue start node [A]  and mark it as visited
 - 2. Dequeue start node [A] from the queue
 - 3. Enqueue each unvisited neighbor of the current node [D, C, E, H]
