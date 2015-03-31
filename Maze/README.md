@@ -33,4 +33,26 @@
 	- %n_s/d/f 
 		- leaves n number of spaces for each string, int, float
 
+<h1> MAZE </h1>
+- 2D array of characters
+	- $ - exit
+	- # - path
+	- ' ' - wall
+	- C - me
+	- . - visited
+- Recursively solve in each possible direction
+- Depth first search
+	- DOWNSIDE: exit may be right in front of you, but you choose the right path
+	- UPSIDE: exit may be right in front of you and you choose the right path
+- Recursion stack stores how to get back
 
+<h2> Breadth First Search </h2>
+  B
+  C
+D A E F G
+  H
+  I
+  J K L M
+1. Enqueue start node [A]  and mark it as visited
+2. Dequeue start node [A] from the queue
+3. Enqueue each unvisited neighbor of the current node [D, C, E, H]
