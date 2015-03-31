@@ -56,3 +56,5 @@
 - 1. Enqueue start node [A]  and mark it as visited
 - 2. Dequeue start node [A] from the queue
 - 3. Enqueue each unvisited neighbor of the current node [D, C, E, H]
+- 4. Dequeue each node from the queue if it isn't the exit
+- 5. Repeat 3 and 4 until the exit is found
