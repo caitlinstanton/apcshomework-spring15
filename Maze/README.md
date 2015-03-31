@@ -28,7 +28,9 @@
 <h2> FORMATTING </h2>
 - System.out.printf()--prints everything on the same line
         - can set placeholder with %s (string), %d (int), %f (float/double)
-	- System.out.printf("Hello %s earth", "middle"); -- prints "Hello middle earth"
-	- %n_s/d/f -- leaves n number of spaces for each string, int, float
+	- System.out.printf("Hello %s earth", "middle")
+		- prints "Hello middle earth"
+	- %n_s/d/f 
+		- leaves n number of spaces for each string, int, float
 
 
