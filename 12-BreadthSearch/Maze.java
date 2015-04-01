@@ -7,6 +7,8 @@ public class Maze {
     private int maxY;
     private char wall = ' ';
     private char exit = '$';
+    private int exitX;
+    private int exitY;
     private char path = '#';
     private char me = 'C';
     private char visited = '.';
