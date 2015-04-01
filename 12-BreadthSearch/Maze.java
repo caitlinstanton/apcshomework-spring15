@@ -40,7 +40,7 @@ public class Maze {
     
     }
     
-    public String toString() {
+   public String toString() {
 	String s = "[2J\n";
 	for (int y=0;y<maxY;y++)
 	    {
@@ -52,29 +52,13 @@ public class Maze {
 	return s;
     }
 
-    public void solve(int x, int y) {
-	if (board[x][y] == wall ||
-	    board[x][y] == me ||
-	    board[x][y] == visited ||
-	    solved) {
-	    return;
-	}
-	if (board[x][y] == exit) {
-	    System.out.println(this);
-	    solved = true;
-	}
-	if (board[x][y] != path) {
-	    return;
-	}
-	delay(100);
-	System.out.println(this);
-	board[x][y] = me;
-	solve(x+1,y);
-	solve(x-1,y);
-	solve(x,y+1);
-	solve(x,y-1);
-	if (!solved) {
-	    board[x][y] = visited;
+    public void solve(int xcor, int ycor) {
+	while (solved == false) {
+	    Node tmp = new Node(x,y);
+	    if (x == exitX && y == exitY) {
+		solved = true;
+		System.exit(0);
+	    }
 	}
     }
     
