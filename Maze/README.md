@@ -60,3 +60,14 @@
 	- Check if that node is the exit
 - 4. Dequeue each node from the queue if it isn't the exit
 - 5. Repeat 3 and 4 until the exit is found
+
+- solve(x,y) {
+	- while ( ) {
+		- if (x,y == exit) {
+		- }
+		- current = remove first item from frontier
+		- for each unmarked neighbor N of current:
+			- mark N as visited
+			- add N to frontier
+	- }
+- }
