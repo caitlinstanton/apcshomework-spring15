@@ -21,9 +21,12 @@ public class Node{
 	y = ycor;
     }
 
-    public String getData(){
-	String retval = "[" + x + ", " + y + "]";
-	return retval;
+    public int getX(){
+	return x;
+    }
+
+    public int getY() {
+	return y;
     }
 
     public void setNext(Node n){

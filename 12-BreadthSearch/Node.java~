@@ -5,8 +5,8 @@ public class Node{
     private Node next;
     
     public Node(){
-	x = null;
-	y = null;
+	x = 0;
+	y = 0;
 	next = null;
     }
 
@@ -18,7 +18,7 @@ public class Node{
 
     public void setData(int xcor, int ycor){
         x = xcor;
-	y = ycor
+	y = ycor;
     }
 
     public String getData(){
