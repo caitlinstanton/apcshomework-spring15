@@ -9,7 +9,7 @@ public class Maze {
     private int tmpY = 0;
     private char wall = ' ';
     private char exit = '$';
-    private myQueue q = new myQueue();
+    public myQueue q = new myQueue();
     private char path = '#';
     private char me = 'C';
     private char visited = '.';
@@ -58,50 +58,60 @@ public class Maze {
     public void solve(Node tmp) {
 	tmpX = tmp.getX();
 	tmpY = tmp.getY();
+	board[tmpX][tmpY] = me;
 	while (solved == false) {
-	    q.enqueue(tmp);
+	    q.enqueue(tmp.getX(),tmp.getY());
 	    if (board[tmpX][tmpY] == exit) {
 		solved = true;
 		System.exit(0);
 	    }
 	    board[tmpX][tmpY] = visited;
-	    q.dequeue(tmp);  
+	    q.dequeue();  
 	    solveHelper();
 	}
     }
     
     public void solveHelper() {
-	if (board[tmpX+1][tmpY] != wall &&
-	    board[tmpX+1][tmpY] != exit) {
-	    Node tmp1 = new Node(tmpX+1, tmpY);
-	    q.enqueue(tmp1);
-	    solve(tmp1);
+	if (tmpX + 1 < maxX) {
+	    if (board[tmpX+1][tmpY] != wall &&
+		board[tmpX+1][tmpY] != exit) {
+		Node tmp1 = new Node(tmpX+1, tmpY);
+		q.enqueue(tmp1.getX(), tmp1.getY());
+		solve(tmp1);
+	    }
 	}
-	if (board[tmpX-1][tmpY] != wall &&
-	    board[tmpX+1][tmpY] != exit) {
-	    Node tmp2 = new Node(tmpX-1, tmpY);
-	    q.enqueue(tmp2);
-	    solve(tmp2);
+	if (tmpX - 1 > 0) {
+	    if (board[tmpX-1][tmpY] != wall &&
+		board[tmpX+1][tmpY] != exit) {
+		Node tmp2 = new Node(tmpX-1, tmpY);
+		q.enqueue(tmp2.getX(), tmp2.getY());
+		solve(tmp2);
+	    }
 	}
-	if (board[tmpX][tmpY+1] != wall &&
-	    board[tmpX+1][tmpY] != exit) {
-	    Node tmp3 = new Node(tmpX, tmpY+1);
-	    q.enqueue(tmp3);
-	    solve(tmp3);
+	if (tmpY + 1 < maxY) {
+	    if (board[tmpX][tmpY+1] != wall &&
+		board[tmpX+1][tmpY] != exit) {
+		Node tmp3 = new Node(tmpX, tmpY+1);
+		q.enqueue(tmp3.getX(), tmp3.getY());
+		solve(tmp3);
+	    }
 	}
-	if (board[tmpX][tmpY-1] != wall &&
-	    board[tmpX+1][tmpY] != exit) {
- 	    Node tmp4 = new Node(tmpX, tmpY-1);
-	    q.enqueue(tmp4);
-	    solve(tmp4);
+	if(tmpY - 1 > 0) {
+	    if (board[tmpX][tmpY-1] != wall &&
+		board[tmpX+1][tmpY] != exit) {
+		Node tmp4 = new Node(tmpX, tmpY-1);
+		q.enqueue(tmp4.getX(), tmp4.getY());
+		solve(tmp4);
+	    }
 	}
 	
     }
     
     public static void main(String[] args){
+	Node n = new Node(0,0);
 	Maze m = new Maze();
 	System.out.println(m);
-	m.solve(1,1);
+	m.solve(n);
     }
     
 }

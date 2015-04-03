@@ -15,7 +15,7 @@ public class myQueue {
 	//return start == null;
     }
 
-    public void enQueue(int x, int y){
+    public void enqueue(int x, int y){
 	Node tmp = new Node(x, y);
 	tmp.setNext(end.getNext());
 	end.setNext(tmp);
@@ -31,14 +31,14 @@ public class myQueue {
 	 */
     }
 
-    public String deQueue (){
+    public String dequeue (){
 	Node tmp = end.getNext();
 	Node before = end;
 	while (tmp.getNext() != start) {
 	    tmp = tmp.getNext();
 	    before = before.getNext();
 	}
-	String retval = tmp.getData();
+	String retval = "[" + tmp.getX() + ", " + tmp.getY() + "]";;
 	before.setNext(start);
 	return retval;
 	/*
@@ -56,14 +56,14 @@ public class myQueue {
 	while (tmp.getNext() != start) {
 	    tmp = tmp.getNext();
 	}
-	return (tmp.getData());
+	return "[" + tmp.getX() + ", " + tmp.getY() + "]";
     }
 
     public String toString() {
 	String s = "";
 	Node tmp = end.getNext();
 	while (tmp != null) {
-	    s += tmp.getData() + "\n";
+	    s += "[" +  tmp.getX() + ", " + tmp.getY() + "]" +  "\n";
 	    tmp = tmp.getNext();
 	}
 	return s;
