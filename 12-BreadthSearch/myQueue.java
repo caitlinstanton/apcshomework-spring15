@@ -15,8 +15,8 @@ public class myQueue {
 	//return start == null;
     }
 
-    public void enqueue(int x, int y){
-	Node tmp = new Node(x, y);
+    public void enqueue(Node n){
+	Node tmp = n;
 	tmp.setNext(end.getNext());
 	end.setNext(tmp);
 	/*
@@ -51,12 +51,12 @@ public class myQueue {
 	*/	   
     }
 
-    public String head(){
+    public Node head(){
 	Node tmp = end.getNext();
 	while (tmp.getNext() != start) {
 	    tmp = tmp.getNext();
 	}
-	return "[" + tmp.getX() + ", " + tmp.getY() + "]";
+	return tmp;
     }
 
     public String toString() {

@@ -22,7 +22,7 @@ public class Maze {
     }
     
     public Maze() {
-	maxX=40;
+	maxX=20;
 	maxY=20;
 	board = new char[maxX][maxY];
 	
@@ -55,10 +55,32 @@ public class Maze {
 	return s;
     }
     
-    public void solve(Node tmp) {
-	tmpX = tmp.getX();
-	tmpY = tmp.getY();
-	board[tmpX][tmpY] = me;
+    public String solve() {
+        Node tmp = null;
+	Node n = new Node(0,1);
+	n.setNext(null);
+	q.enqueue(n);
+        while (!q.empty() && solved == false) {
+	    tmp = q.head();
+	    if (board[n.getX()][n.getY()] == exit) {
+		solved = true;
+		return "YAAAS";
+	    }
+	    Node up = new Node(n.getX() - 1, n.getY());
+	    Node down = new Node(n.getX() + 1, n.getY());
+	    Node left = new Node(n.getX(), n.getY() - 1);
+	    Node right = new Node(n.getX(), n.getY() + 1);
+	    up.setNext(n);
+	    down.setNext(n);
+	    left.setNext(n);
+	    right.setNext(n);
+	    q.enqueue(up);
+	    q.enqueue(down);
+	    q.enqueue(left);
+	    q.enqueue(right);
+	}
+	return "NOPE";
+	/*
 	while (solved == false) {
 	    q.enqueue(tmp.getX(),tmp.getY());
 	    if (board[tmpX][tmpY] == exit) {
@@ -106,12 +128,8 @@ public class Maze {
 	}
 	
     }
+	*/
+
     
-    public static void main(String[] args){
-	Node n = new Node(0,0);
-	Maze m = new Maze();
-	System.out.println(m);
-	m.solve(n);
     }
-    
 }
