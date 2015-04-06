@@ -44,7 +44,7 @@ public class Maze {
     }
     
     public String toString() {
-	String s = "[2J\n";
+	String s = "^[[2J\n";
 	for (int y=0;y<maxY;y++)
 	    {
 		for (int x=0;x<maxX;x++)
@@ -56,10 +56,13 @@ public class Maze {
     }
     
     public String solve(int x, int y) {
+	int recursion = 0;
         Node n = new Node(board[x][y],x,y);
 	q.enqueue(n);
 	Node<Character> current;
         while (!q.empty() && solved == false) {
+	    recursion++;
+	    System.out.println(recursion);
 	    current = q.dequeue();
 	    board[n.getX()][n.getY()] = me;
 	    if (board[n.getX()][n.getY()] == exit) {
@@ -67,28 +70,52 @@ public class Maze {
 		return "YAAAS";
 	    } 
 	    if (n.getX()-1 > 0 && n.getX()-1 < maxX &&
-		n.getY() > 0 && n.getY() < maxY && 
-		board[n.getX()-1][n.getY()] == path) {
-		Node up = new Node(board[n.getX()-1][n.getY()],n.getX()-1, n.getY());
+		n.getY() > 0 && n.getY() < maxY) {
+		board[n.getX()-1][n.getY()] = me;
+		Node<Character> up = new Node(board[n.getX()-1][n.getY()],n.getX()-1, n.getY());
 		q.enqueue(up);
+		System.out.println("UP");
+		System.out.println(this);
+		try{
+		    Thread.sleep(25);
+		} catch (Exception e){}
+		solve(up.getX(),up.getY());
 	    }
 	    if (n.getX()+1 > 0 && n.getX()+1 < maxX &&
-		n.getY() > 0 && n.getY() < maxY &&
-		board[n.getX()+1][n.getY()] == path) {
-		Node down = new Node(board[n.getX()+1][n.getY()],n.getX()+1, n.getY());
+		n.getY() > 0 && n.getY() < maxY) {
+		board[n.getX()+1][n.getY()] = me;
+		Node<Character> down = new Node(board[n.getX()+1][n.getY()],n.getX()+1, n.getY());
 		q.enqueue(down);
+		System.out.println("DOWN");
+		System.out.println(this);
+		try{
+		    Thread.sleep(25);
+		} catch (Exception e){}
+		solve(down.getX(),down.getY());
 	    }
 	    if (n.getX() > 0 && n.getX() < maxX &&
-		n.getY()-1 > 0 && n.getY()-1 < maxY && 
-		board[n.getX()][n.getY()-1] == path) {
-		Node left = new Node(board[n.getX()][n.getY()-1],n.getX(), n.getY()-1);
+		n.getY()-1 > 0 && n.getY()-1 < maxY) {
+		board[n.getX()][n.getY()-1] = me;
+		Node<Character> left = new Node(board[n.getX()][n.getY()-1],n.getX(), n.getY()-1);
 		q.enqueue(left);
+		System.out.println("LEFT");
+		System.out.println(this);
+		try{
+		    Thread.sleep(25);
+		} catch (Exception e){}
+		solve(left.getX(),left.getY());
 	    }
 	    if (n.getX() > 0 && n.getX() < maxX &&
-		n.getY()+1 > 0 && n.getY()+1 < maxY && 
-		board[n.getX()][n.getY()+1] == path) {
-		Node right = new Node(board[n.getX()][n.getY()+1],n.getX(), n.getY()+1);
+		n.getY()+1 > 0 && n.getY()+1 < maxY) {
+		board[n.getX()][n.getY()+1] = me;
+		Node<Character> right = new Node(board[n.getX()][n.getY()+1],n.getX(), n.getY()+1);
 		q.enqueue(right);
+		System.out.println("RIGHT");
+		System.out.println(this);
+		try{
+		    Thread.sleep(25);
+		} catch (Exception e){}
+		solve(right.getX(),right.getY());
 	    }
 	}
 	return "NOPE";
