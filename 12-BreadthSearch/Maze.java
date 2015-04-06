@@ -22,7 +22,7 @@ public class Maze {
     }
     
     public Maze() {
-	maxX=20;
+	maxX=40;
 	maxY=20;
 	board = new char[maxX][maxY];
 	
@@ -44,7 +44,7 @@ public class Maze {
     }
     
     public String toString() {
-	String s = "[2J\n";
+	String s = "[2J\n";
 	for (int y=0;y<maxY;y++)
 	    {
 		for (int x=0;x<maxX;x++)
@@ -55,29 +55,41 @@ public class Maze {
 	return s;
     }
     
-    public String solve() {
-        Node tmp = null;
-	Node n = new Node(0,1);
-	n.setNext(null);
+    public String solve(int x, int y) {
+        Node n = new Node(board[x][y],x,y);
 	q.enqueue(n);
+	Node<Character> current;
         while (!q.empty() && solved == false) {
-	    tmp = q.head();
+	    current = q.dequeue();
+	    board[n.getX()][n.getY()] = me;
 	    if (board[n.getX()][n.getY()] == exit) {
 		solved = true;
 		return "YAAAS";
+	    } 
+	    if (n.getX()-1 > 0 && n.getX()-1 < maxX &&
+		n.getY() > 0 && n.getY() < maxY && 
+		board[n.getX()-1][n.getY()] == path) {
+		Node up = new Node(board[n.getX()-1][n.getY()],n.getX()-1, n.getY());
+		q.enqueue(up);
 	    }
-	    Node up = new Node(n.getX() - 1, n.getY());
-	    Node down = new Node(n.getX() + 1, n.getY());
-	    Node left = new Node(n.getX(), n.getY() - 1);
-	    Node right = new Node(n.getX(), n.getY() + 1);
-	    up.setNext(n);
-	    down.setNext(n);
-	    left.setNext(n);
-	    right.setNext(n);
-	    q.enqueue(up);
-	    q.enqueue(down);
-	    q.enqueue(left);
-	    q.enqueue(right);
+	    if (n.getX()+1 > 0 && n.getX()+1 < maxX &&
+		n.getY() > 0 && n.getY() < maxY &&
+		board[n.getX()+1][n.getY()] == path) {
+		Node down = new Node(board[n.getX()+1][n.getY()],n.getX()+1, n.getY());
+		q.enqueue(down);
+	    }
+	    if (n.getX() > 0 && n.getX() < maxX &&
+		n.getY()-1 > 0 && n.getY()-1 < maxY && 
+		board[n.getX()][n.getY()-1] == path) {
+		Node left = new Node(board[n.getX()][n.getY()-1],n.getX(), n.getY()-1);
+		q.enqueue(left);
+	    }
+	    if (n.getX() > 0 && n.getX() < maxX &&
+		n.getY()+1 > 0 && n.getY()+1 < maxY && 
+		board[n.getX()][n.getY()+1] == path) {
+		Node right = new Node(board[n.getX()][n.getY()+1],n.getX(), n.getY()+1);
+		q.enqueue(right);
+	    }
 	}
 	return "NOPE";
 	/*
