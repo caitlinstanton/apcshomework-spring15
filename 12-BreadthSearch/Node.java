@@ -1,21 +1,20 @@
-public class Node<E>{
+public class Node{
     
-    private E symbol;
+    private char symbol;
     private int x;
     private int y;
-    private Node<E> next;
+    private Node next;
     
     public Node(){
-        symbol = null;
 	next = null;
     }
 
-    public Node(E s) {
+    public Node(char s) {
 	symbol = s;
 	next = null;
     }
 
-    public Node(E s, int xcor, int ycor){
+    public Node(char s, int xcor, int ycor){
 	symbol = s;
         x = xcor;
 	y = ycor;
@@ -35,15 +34,15 @@ public class Node<E>{
 	return y;
     }
     
-    public E getData() {
+    public char getData() {
 	return symbol;
     }
 
-    public void setNext(Node<E> n){
+    public void setNext(Node n){
 	next = n;
     }
 
-    public Node<E> getNext(){
+    public Node getNext(){
 	return next;
     }
 
