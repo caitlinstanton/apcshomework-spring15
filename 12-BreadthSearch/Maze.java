@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Maze {
+public class BFSMaze {
     private char[][] board;
     private int maxX;
     private int maxY;
@@ -19,7 +19,7 @@ public class Maze {
 	} catch (Exception e) {}
     }
     
-    public Maze() {
+    public BFSMaze() {
 	maxX=40;
 	maxY=20;
 	board = new char[maxX][maxY];
@@ -59,51 +59,29 @@ public class Maze {
         while (!q.empty()){
 	    Node n = q.dequeue();
 	    board[n.getX()][n.getY()] = me;
-	    
 	    if (n.getData() == exit) {
 		solved = true;
 		System.exit(0);
-	    } 
-	    
+	    }
 	    if (n.getX()-1 > 0 && n.getX()-1 < maxX &&
 		n.getY() > 0 && n.getY() < maxY && 
 		board[n.getX()-1][n.getY()] == path) {
 		q.enqueue(board[n.getX()-1][n.getY()],n.getX()-1, n.getY());
-		/*
-		try{
-		    Thread.sleep(25);
-		} catch (Exception e){}
-	        */
 	    }
 	    if (n.getX()+1 > 0 && n.getX()+1 < maxX &&
 		n.getY() > 0 && n.getY() < maxY && 
 		board[n.getX()+1][n.getY()] == path) {
 	        q.enqueue(board[n.getX()+1][n.getY()],n.getX()+1, n.getY());
-		/*
-		try{
-		    Thread.sleep(25);
-		} catch (Exception e){}
-		*/
 	    }
 	    if (n.getX() > 0 && n.getX() < maxX &&
 		n.getY()-1 > 0 && n.getY()-1 < maxY && 
 		board[n.getX()][n.getY()-1] == path) {
 	        q.enqueue(board[n.getX()][n.getY()-1],n.getX(), n.getY()-1);
-		/*
-		try{
-		    Thread.sleep(25);
-		} catch (Exception e){}
-		*/
 	    }
 	    if (n.getX() > 0 && n.getX() < maxX &&
 		n.getY()+1 > 0 && n.getY()+1 < maxY && 
 		board[n.getX()][n.getY()+1] == path) {
 	        q.enqueue(board[n.getX()][n.getY()+1],n.getX(), n.getY()+1);
-	        /*
-		try{
-		    Thread.sleep(25);
-		} catch (Exception e){}
-	        */
 	    }
 	    try {
 		Thread.sleep(25);
