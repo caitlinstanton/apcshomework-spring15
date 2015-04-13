@@ -93,39 +93,49 @@ public class Maze {
 	    int cx = current.getX();
 	    int cy = current.getY();
 
+	    if(board[cx][cy] == '$') {
+	        break;
+	    }
+
 	    board[cx][cy] = 'z';
 	    Node tmp;
-
-	    if(board[cx][cy] == '$') {
-		break;
-	    }
 
 	    tx = cx + 1;
 	    ty = cy;
 	    if (board[tx][ty] == '#' || board[tx][ty] == '$'){
 		tmp = new Node(tx,ty);
+
 		f.add(tmp);
 	    }
 	     tx = cx - 1;
 	    ty = cy;
 	    if (board[tx][ty] == '#' || board[tx][ty] == '$'){
 		tmp = new Node(tx,ty);
+		tmp.setPrev(current);
 		f.add(tmp);
 	    }
 	    tx = cx;
 	    ty = cy + 1;
 	    if (board[tx][ty] == '#' || board[tx][ty] == '$'){
 		tmp = new Node(tx,ty);
+		tmp.setPrev(current);
 		f.add(tmp);
 	    }
 	    tx = cx;
 	    ty = cy - 1;
 	    if (board[tx][ty] == '#' || board[tx][ty] == '$'){
 		tmp = new Node(tx,ty);
+		tmp.setPrev(current);
 		f.add(tmp);
 	    }
 
 	    delay(50);
+	    System.out.println(this);
+	}
+	//recover the path
+	for (Node p = current.getPrev(); p != null; p = p.getPrev()) {
+	    board[p.getX()][p.getY()] = 'P';
+	    delay(100);
 	    System.out.println(this);
 	}
     }
