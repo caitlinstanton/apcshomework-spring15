@@ -6,3 +6,7 @@
 <H2>Maze Heuristics</h2>
 1. Distance formula (euclidean)
 2. Manhattan (taxi cab) distance
+
+<h2>A* Search</h2>
+- Priority of Node n
+  - Cost to get to node N and estimated distance to goal
