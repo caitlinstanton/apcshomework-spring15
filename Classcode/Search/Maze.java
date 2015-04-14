@@ -12,6 +12,8 @@ public class Maze {
     private char visited = '.';
     private boolean solved = false;
 
+    private Frontier f;
+
     public void delay(int n){
 	try {
 	    Thread.sleep(n);
@@ -78,8 +80,18 @@ public class Maze {
 	}
     }
 
+    public void addtoFront(int tx,int ty, Node current){
+	Node tmp = null;
+	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
+	    tmp = new Node(tx,ty);
+	    tmp.setPrev(current);
+	    f.add(tmp);
+	}	
+    }
+    
     public void bfs(int x, int y) {
-	Frontier f = new Frontier();
+        f = new Frontier();
+	//f = new StackFront();
 
 	//add initial code to frontier
 	f.add(new Node(x,y));
@@ -100,6 +112,7 @@ public class Maze {
 	    board[cx][cy] = 'z';
 	    Node tmp;
 
+	    /*
 	    tx = cx + 1;
 	    ty = cy;
 	    if (board[tx][ty] == '#' || board[tx][ty] == '$'){
@@ -128,6 +141,12 @@ public class Maze {
 		tmp.setPrev(current);
 		f.add(tmp);
 	    }
+	    */
+	    
+	    addtoFront(cx+1,cy,current);
+	    addtoFront(cx-1,cy,current);
+	    addtoFront(cx,cy+1,current);
+	    addtoFront(cx,cy-1,current);
 
 	    delay(50);
 	    System.out.println(this);
