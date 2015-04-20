@@ -64,7 +64,7 @@ public class Maze {
     	Node tmp = null;
     	if (board[tmpX][tmpY] == path || board[tmpX][tmpY] == exit) {
     		tmp = new Node(tmpX,tmpY,current.getSpaces()+1);
-    		tmp.AStar(26,18);
+    		tmp.AStarSearch(26,18);
     		tmp.setPrev(current);
     		f.add(tmp);
     	}
