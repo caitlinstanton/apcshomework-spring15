@@ -60,44 +60,48 @@ public class Maze {
 	return s;
     }
 
-    public Node findExit() {
-	for (int y = 0; y < maxY; y++) {
-	    for (int x = 0; x < maxX; x++) {
-		if (board[x][y] == exit) {
-		    return (new Node(x,y));
-		}
-	    }
-	}
-	return null;
-    }
-
-    public void addOrder(Node n, LinkedList<Node> list) {
-	Node exit = findExit();
-	double priority = n.calcEucl(exit.getX(), exit.getY());
-	for (int i = 0; i < list.size(); i ++) {
-	    if (priority < list.get(i).calcEucl(exit.getX(),exit.getY())) {
-		list.add(n,i);
-	    }
-	}
+    public void addToFront(int tmpX, int tmpY, Nde current) {
+    	Node tmp = null;
+    	if (board[tmpX][tmpY] == path || board[tmpX][tmpY] == exit) {
+    		tmp = new Node(tmpX,tmpY,current.getSpaces()+1);
+    		tmp.AStar(26,18);
+    		tmp.setPrev(current);
+    		f.add(tmp);
+    	}
     }
 
     public void bestSearch(int x, int y) {
-        l = new LinkedList<Node>();
-	Node n = new Node(x,y);
-	l.addOrder(n,l);
+        f = new Frontier();
+        f.add(new Node(x,y));
+        int tmpX = 0;
+        int tmpY = 0;
+        Node current = null;
+        while(!f.isEmpty()) {
+        	current = f.remove();
+        	int currentX = current.getX();
+        	int currentY = current.getY();
+        	if (board[currentX][currentY] == exit) {
+        		break;
+        	}
+        	board[currentX][currentY] = me;
+        	addToFront(currentX+1,currentY,current);
+        	addToFront(currentX-1,currentY,current);
+        	addToFront(currentX,currentY+1,current);
+        	addToFront(currentX,currentY-1,current);
+        	System.out.println(this);
+        }
+        
+        //Path recovery
+        for(Node p = current.getPrev(); p != null; p = p.getPrev()) {
+        	board[p.getX()][p.getY()] = 'P';
+        	System.out.println(this);
+        }
     }
     
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
-	//m.solve(1,1);
-	//m.bfs(1,1);
-        //Node n = m.findExit();
-	//System.out.println(n.getX());
-	//System.out.println(n.getY());
-	//System.out.println(n.calcEucl(n.getX(),n.getY()));
 	m.bestSearch(1,1);
-	
     }
     
 }
