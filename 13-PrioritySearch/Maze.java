@@ -7,6 +7,8 @@ public class Maze {
     private int maxY;
     private char wall = ' ';
     private char exit = '$';
+    private char exitX;
+    private char exitY;
     private char path = '#';
     private char me = 'C';
     private char visited = '.';
@@ -32,6 +34,10 @@ public class Maze {
           String line = sc.nextLine();
           for (int i=0;i<maxX;i++) {
               board[i][j] = line.charAt(i);
+              if (board[i][j] == exit) {
+              	exitX = i;
+              	exitY = j;
+              }
           }
           j++;
         }
