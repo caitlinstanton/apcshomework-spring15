@@ -7,12 +7,12 @@ public class Maze {
     private int maxY;
     private char wall = ' ';
     private char exit = '$';
-    private char exitX;
-    private char exitY;
+    private int exitX;
+    private int exitY;
     private char path = '#';
     private char me = 'C';
     private char visited = '.';
-    private boolean solved = false;
+    private Frontier f;
 
     private LinkedList<Node> l;
 
@@ -60,11 +60,11 @@ public class Maze {
 	return s;
     }
 
-    public void addToFront(int tmpX, int tmpY, Nde current) {
+    public void addToFront(int tmpX, int tmpY, Node current) {
     	Node tmp = null;
     	if (board[tmpX][tmpY] == path || board[tmpX][tmpY] == exit) {
-    		tmp = new Node(tmpX,tmpY,current.getSpaces()+1);
-    		tmp.AStarSearch(26,18);
+    		tmp = new Node(tmpX,tmpY,current.getspaces()+1);
+    		tmp.AStarSearch(exitX,exitY);
     		tmp.setPrev(current);
     		f.add(tmp);
     	}
@@ -88,12 +88,14 @@ public class Maze {
         	addToFront(currentX-1,currentY,current);
         	addToFront(currentX,currentY+1,current);
         	addToFront(currentX,currentY-1,current);
+		delay(50);
         	System.out.println(this);
         }
         
         //Path recovery
         for(Node p = current.getPrev(); p != null; p = p.getPrev()) {
         	board[p.getX()][p.getY()] = 'P';
+		delay(100);
         	System.out.println(this);
         }
     }
