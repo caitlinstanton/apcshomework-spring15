@@ -1,5 +1,15 @@
 public class Tree {
 
+    private Node root;
+    
+    public Tree() {
+	root = new Node();
+    }
+
+    public Tree(Node n) {
+	root = n;
+    }
+    
     public Node search(Node T, Integer i) {
 	while (T != null) {
 	    int c = T.getData().compareTo(i);
@@ -14,11 +24,17 @@ public class Tree {
 	return null;
     }
 
-    public void insert(Node T) {
+    public void insert(Integer i) {
+	Node T = root;
 	if (T == null) {
-	    //Print the node you are inserting
+	    root = new Node(i);
+	    root.setLeft(null);
+	    root.setRight(null);
+	    System.out.println(root);
 	}
 	//Insert as a new leaf
+	Node n = new Node(T.getData());
+	search(T,n.getData());
 	    //Create new node n
 	    //Search for the value of n but use a piggyback pointer
 	    //When lead pointer (T) gets to null, piggyback (T2) will be at the
