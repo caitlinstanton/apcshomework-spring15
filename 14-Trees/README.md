@@ -15,6 +15,7 @@
 	- either empty or has one of more nodes; each node can have one or more children, and one node is designated as the root
 	- drawn from top down, or from the side across (stemming from the root node)
 - Binary tree: each leaf has one or two children
+- Binary search tree: binary tree such that given any node with value v, all the values in the left subtree have values less than v, and all values in the right subtree have values greater than v
 
 <h2>Nodes</h2>
 - Leaf: node without children
