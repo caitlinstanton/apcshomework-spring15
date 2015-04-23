@@ -16,7 +16,14 @@ public class Tree {
 
     public void insert(Node T) {
 	if (T == null) {
-	    System.out.println(T);
+	    //Print the node you are inserting
 	}
+	//Insert as a new leaf
+	    //Create new node n
+	    //Search for the value of n but use a piggyback pointer
+	    //When lead pointer (T) gets to null, piggyback (T2) will be at the
+         	//node before the insertion point
+	//Insert new node to the left or right of T2 as appropriate
+    }
 
 }
