@@ -1,6 +1,6 @@
 public class BST {
 
-    private Node root;
+    private Node r;
     
     public BST() {
 	root = new Node();
@@ -10,6 +10,7 @@ public class BST {
 	root = n;
     }
     
+    /*
     public Node search(Node t, Integer i) {
 	while (t != null) {
 	    if (t.getData() < i) {
@@ -22,8 +23,29 @@ public class BST {
 	}
 	return null;
     }
+    */
 
-    public void insert(Node t, Integer i) {
+    //RECURSIVE VERSION
+    public Node search(Node t, int i) {
+	if (t == null || t.getData() == i) {
+	    return null;
+	} else if (i < t.getData()) {
+	    return search(t.getLeft(),i);
+	} else {
+	    return search(t.getRight(),i);
+	}
+    }
+
+    public String search(int i) {
+	Node n = search(r,i);
+	if (n == null) {
+	    return "NOT FOUND";
+	} else {
+	    return n.toString();
+	}
+    }
+
+    public void insert(int i) {
 	//Insert as a new leaf
 	    //Create new node n
 	    //Search for the value of n but use a piggyback pointer
@@ -32,13 +54,15 @@ public class BST {
 	//Insert new node to the left or right of T2 as appropriate
 
         Node newLeaf = new Node(i);
-        if (t == null)
-            t = newLeaf;
-        Node cur = t;
+        Node cur = r;
         Node piggy = null;
+        if (r == null)
+            r = newLeaf;
         while (cur != null){
             piggy = cur;
-            if (t.getData() < i) {
+	    if (t.getData() == i) {
+		return;
+	    } else if (t.getData() < i) {
             	t = t.getRight();
             } else if (t.getData() > i) {
             	t = t.getLeft();
@@ -48,8 +72,7 @@ public class BST {
         }
         if (i > piggy.getData()) {
             piggy.setRight(newLeaf);
-	}
-	else if (i < piggy.getData()) {
+	} else {
             piggy.setLeft(newLeaf);
 	}
     }
@@ -60,6 +83,10 @@ public class BST {
 	    return "";
 	result = t.toString() + toString(t.getLeft()) + toString(t.getRight());
 	return result;
+    }
+
+    public String traverse(Node t) {
+	
     }
 
     public static void main(String[] args) {
