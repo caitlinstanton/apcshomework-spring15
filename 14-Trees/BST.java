@@ -1,6 +1,6 @@
 public class BST {
 
-    private Node r;
+    private Node root;
     
     public BST() {
 	root = new Node();
@@ -37,7 +37,7 @@ public class BST {
     }
 
     public String search(int i) {
-	Node n = search(r,i);
+	Node n = search(root,i);
 	if (n == null) {
 	    return "NOT FOUND";
 	} else {
@@ -54,18 +54,18 @@ public class BST {
 	//Insert new node to the left or right of T2 as appropriate
 
         Node newLeaf = new Node(i);
-        Node cur = r;
+        Node cur = root;
         Node piggy = null;
-        if (r == null)
-            r = newLeaf;
+        if (root == null)
+            root = newLeaf;
         while (cur != null){
             piggy = cur;
-	    if (t.getData() == i) {
+	    if (cur.getData() == i) {
 		return;
-	    } else if (t.getData() < i) {
-            	t = t.getRight();
-            } else if (t.getData() > i) {
-            	t = t.getLeft();
+	    } else if (cur.getData() < i) {
+            	cur = cur.getRight();
+            } else if (cur.getData() > i) {
+            	cur = cur.getLeft();
             } else {
             	return;
             }
@@ -77,36 +77,34 @@ public class BST {
 	}
     }
 
-    public String toString(Node t) {
-	String result = "";
-	if (t == null)
-	    return "";
-	result = t.toString() + toString(t.getLeft()) + toString(t.getRight());
-	return result;
-    }
-
     public String traverse(Node t) {
-	
+	if (t == null) {
+	    return " ";
+	} else {
+	    return traverse(t.getLeft()) + " " +
+		t.getData() + " " +
+		traverse(t.getRight());
+	}
     }
 
     public static void main(String[] args) {
 	Node n = new Node(17);
 	BST b = new BST(n);
-	System.out.println(b.toString(n));
+	System.out.println(b.traverse(n));
 	System.out.println();
 
-	b.insert(n,22);
+	b.insert(22);
 	System.out.println();
 
-	b.insert(n,15);
+	b.insert(15);
 	System.out.println();
 
-	System.out.println(b.toString(n));
+	System.out.println(b.traverse(n));
 
-	b.insert(n,9);
+	b.insert(9);
 	System.out.println();
 
-	b.insert(n,27);
+	b.insert(27);
     }
     
 }
