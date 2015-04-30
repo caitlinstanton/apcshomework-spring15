@@ -77,6 +77,67 @@ public class BST {
 	}
     }
 
+    public void remove(int i) {
+	/*
+	  - Get a pointer (t) to the node to delete it and its parent (same
+	  thing as search part of insert but you stop at node to deleter it)
+	      a) t is a leaf --> point t2's left/right to null
+	      b) t has one child --> point t2's left/right to t's only child
+	      c) t has 2 children --> 
+	           1. Find the largest node in the left subtree/largest node
+		   in right
+		       l = t.getLeft();
+		       while (l.getRight() != null) {
+		            l = l.getRight();
+		   2. Copy the data from l into t
+		       remove(t.getLeft(), l.getData());
+	 */
+
+	Node t = root;
+	Node piggy = t;
+	boolean goRight = true;
+	while (t.getData() != i && t != null){
+	    piggy = t;
+	    if (t.getData() < i){
+		t = t.getRight();
+		goRight = true;
+	    } else if (t.getData() > i) {
+		t = t.getLeft();
+		goRight = false;
+	    }
+	}
+	if (t.getLeft() == null && t.getRight() == null){
+	    if (goRight){
+		piggy.setRight(null);
+	    } else {
+		piggy.setLeft(null);
+	    }
+	} else if (t.getLeft() != null || t.getRight() != null){
+	    if (goRight){
+		if (t.getRight() != null){
+		    piggy.setRight(t.getRight());
+		} else {
+		    piggy.setRight(t.getLeft());
+		}
+	    } else {
+		if (t.getRight() != null){
+		    piggy.setLeft(t.getRight());
+		} else {
+		    piggy.setLeft(t.getLeft());
+		}
+	    }
+	} else {
+	    Node right = t.getRight();
+	    Node cur = t;
+	    while (right.getLeft() != null){
+		cur = right;
+		right = right.getLeft();
+	    }
+	    t = right;
+	    cur.setLeft(null);
+	}
+    }
+
     public String traverse(Node t) {
 	if (t == null) {
 	    return " ";
@@ -94,17 +155,20 @@ public class BST {
 	System.out.println();
 
 	b.insert(22);
-	System.out.println();
-
 	b.insert(15);
-	System.out.println();
 
 	System.out.println(b.traverse(n));
-
-	b.insert(9);
 	System.out.println();
 
+	b.insert(9);
 	b.insert(27);
+
+	System.out.println(b.traverse(n));
+	System.out.println();
+
+	b.remove(15);
+
+	System.out.println(b.traverse(n));
     }
     
 }
