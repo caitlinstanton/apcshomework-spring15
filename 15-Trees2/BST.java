@@ -142,11 +142,6 @@ public class BST {
 	}
     }
 
-    //max value
-    //height
-    //split dupes (parent and child have same value)
-         //insert new node (that has the value of one less than the duplicated value) between them
-    //longest leaf-to-leaf path
     public int maxVal(Node t){
         int tmpL = 0;
         int val = 0;
@@ -191,6 +186,25 @@ public class BST {
 	splitDupes(t.getRight());
     }
 
+    public int height(Node t) {
+        if (t == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(height(t.getLeft()), height(t.getRight()));
+        }
+    }
+    
+    public int longest(Node t){
+        if (t == null) {
+            return 0;
+        }else{
+            int cur = height(t.getLeft()) + height(t.getRight()) + 1;
+            int L = longest(t.getLeft());
+            int R = longest(t.getRight());
+            
+            return Math.max(cur, Math.max(L,R));
+        }
+    }
 
     public String traverse(Node t) {
 	if (t == null) {
