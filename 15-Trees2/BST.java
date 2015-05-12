@@ -1,5 +1,6 @@
 public class BST {
 
+    //----------CONSTRUCTORS AND VARIABLES------------//
     private Node root;
     
     public BST() {
@@ -10,6 +11,7 @@ public class BST {
 	root = n;
     }
     
+    //----------SEARCH METHODS------------//
     /*
     public Node search(Node t, Integer i) {
 	while (t != null) {
@@ -45,6 +47,7 @@ public class BST {
 	}
     }
 
+    //-----------NODE-RELATED METHODS-----------//
     public void insert(int i) {
 	//Insert as a new leaf
 	    //Create new node n
@@ -88,7 +91,6 @@ public class BST {
 		   2. Copy the data from l into t
 		       remove(t.getLeft(), l.getData());
 	 */
-
 	Node t = root;
 	Node piggy = t;
 	boolean goRight = true;
@@ -142,6 +144,7 @@ public class BST {
 	}
     }
 
+    //-----------DIMENSIONS OF THE TREE------------//
     public int maxVal(Node t){
         int tmpL = 0;
         int val = 0;
@@ -149,16 +152,36 @@ public class BST {
         if (t != null){
             val = t.getData();
             tmpL = maxVal(t.getLeft());
-            if (tmpL>val){
+            if (tmpL > val){
             val = tmpL;
             }
             tmpR = maxVal(t.getRight());
-            if (tmpR>val){
+            if (tmpR > val){
                 val=tmpR;
             }
         }
         return val;
     }
+
+    /* IN-CLASS METHOD
+    public int maxVal(Node t) {
+	if (t == null) {
+	    return 0;
+	} else {
+	    return max(maxVal(t.getLeft()), maxVal(t.getRight()), t.getData());
+	}
+    }
+     
+    public int max(int l, int r, int cur) {
+	if (l >= r && l >= cur) {
+	    return l;
+	} else if (r >= l && r >= cur) {
+	    return r;
+	} else {
+	    return cur;
+	}
+    }
+    */
 
     public void splitDupes() {
 	//to start at root of tree
@@ -194,18 +217,19 @@ public class BST {
         }
     }
     
-    public int longest(Node t){
+    public int diameter(Node t){
         if (t == null) {
             return 0;
-        }else{
-            int cur = height(t.getLeft()) + height(t.getRight()) + 1;
-            int L = longest(t.getLeft());
-            int R = longest(t.getRight());
+        } else {
+            int path1 = height(t.getLeft()) + height(t.getRight()) * 2;
+            int path2 = longest(t.getLeft());
+            int path3 = longest(t.getRight());
             
-            return Math.max(cur, Math.max(L,R));
+            return max(path1,path2,path3);
         }
     }
 
+    //-----------PRINTING-----------//
     public String traverse(Node t) {
 	if (t == null) {
 	    return " ";
@@ -216,6 +240,7 @@ public class BST {
 	}
     }
 
+    //-----------MAIN-----------//
     public static void main(String[] args) {
 	Node n = new Node(17);
 	BST b = new BST(n);
