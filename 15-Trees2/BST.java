@@ -60,14 +60,10 @@ public class BST {
             root = newLeaf;
         while (cur != null){
             piggy = cur;
-	    if (cur.getData() == i) {
-		return;
-	    } else if (cur.getData() < i) {
+	    if (cur.getData() <= i) {
             	cur = cur.getRight();
-            } else if (cur.getData() > i) {
+            } else if (cur.getData() >= i) {
             	cur = cur.getLeft();
-            } else {
-            	return;
             }
         }
         if (i > piggy.getData()) {
@@ -169,21 +165,32 @@ public class BST {
         return val;
     }
 
-    public void splitDupes(Node t) {
-	while (t != null) {
-	    Node extra = new Node(t.getData() - 1);
-	    if (t.getData() == t.getLeft().getData()) {
-		extra.setRight(t.getLeft());
-		System.out.println("LEFT");
-		t.setLeft(extra);
-	    } else if (t.getData() == t.getRight().getData()) {
-		extra.setRight(t.getRight());
-		System.out.println("R");
-		t.setRight(extra);
-	    }
-	    t = t.getLeft(); //idk about here....
-	}
+    public void splitDupes() {
+	//to start at root of tree
+	splitDupes(root);
     }
+    
+    public void splitDupes(Node t) {
+	if (t == null) {
+	    return;
+	}
+	Node extra = new Node(t.getData() - 1);
+	if (t.getLeft() != null &&
+	    t.getData() == t.getLeft().getData()) {
+	    Node tmp = t.getLeft();
+	    t.setLeft(extra);
+	    extra.setLeft(tmp);
+	}
+	if (t.getRight() != null &&
+	    t.getData() == t.getRight().getData()) {
+	    Node tmp = t.getRight();
+	    t.setRight(extra);
+	    extra.setRight(tmp);
+	}
+        splitDupes(t.getLeft());
+	splitDupes(t.getRight());
+    }
+
 
     public String traverse(Node t) {
 	if (t == null) {
@@ -227,7 +234,7 @@ public class BST {
 	System.out.println(b.traverse(n));
 	System.out.println();
 
-	b.splitDupes(n);
+	b.splitDupes();
 	
 	System.out.println(b.traverse(n));
     }
