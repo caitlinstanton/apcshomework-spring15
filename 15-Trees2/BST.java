@@ -151,6 +151,39 @@ public class BST {
     //split dupes (parent and child have same value)
          //insert new node (that has the value of one less than the duplicated value) between them
     //longest leaf-to-leaf path
+    public int maxVal(Node t){
+        int tmpL = 0;
+        int val = 0;
+        int tmpR = 0;
+        if (t != null){
+            val = t.getData();
+            tmpL = maxVal(t.getLeft());
+            if (tmpL>val){
+            val = tmpL;
+            }
+            tmpR = maxVal(t.getRight());
+            if (tmpR>val){
+                val=tmpR;
+            }
+        }
+        return val;
+    }
+
+    public void splitDupes(Node t) {
+	while (t != null) {
+	    Node extra = new Node(t.getData() - 1);
+	    if (t.getData() == t.getLeft().getData()) {
+		extra.setRight(t.getLeft());
+		System.out.println("LEFT");
+		t.setLeft(extra);
+	    } else if (t.getData() == t.getRight().getData()) {
+		extra.setRight(t.getRight());
+		System.out.println("R");
+		t.setRight(extra);
+	    }
+	    t = t.getLeft(); //idk about here....
+	}
+    }
 
     public String traverse(Node t) {
 	if (t == null) {
@@ -182,6 +215,20 @@ public class BST {
 
 	b.remove(15);
 
+	System.out.println(b.traverse(n));
+	System.out.println();
+
+	System.out.println(b.maxVal(n));
+	System.out.println();
+
+	b.insert(13);
+	b.insert(13);
+
+	System.out.println(b.traverse(n));
+	System.out.println();
+
+	b.splitDupes(n);
+	
 	System.out.println(b.traverse(n));
     }
     
