@@ -3,6 +3,9 @@ public class MinHeap {
     //CHARACTERISTICS
          //Each child is greater than its parent
          //Each level is as full as possible from left to right
+         //Given node n, its children are 2n and 2n+1
+             //Vice versa, given node n, its parent is n/2
+         //Can be contained in an array (with empty slots for each node not there)
 
     //RUNTIMES
          //findMin --> O(1)
