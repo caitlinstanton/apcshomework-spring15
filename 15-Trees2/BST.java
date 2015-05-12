@@ -1,26 +1,5 @@
 public class BST {
 
-<<<<<<< HEAD
-    private Node r;
-    
-    public BST() {
-	r = new Node();
-    }
-
-    public BST(Node n) {
-	r = n;
-    }
-    
-    public Node search(Node T, Integer i) {
-	while (T != null) {
-	    int c = T.getData().compareTo(i);
-	    if (c > 0) {
-		T = T.getRight();
-	    } else if (c < 0) {
-		T = T.getLeft();
-	    } else {
-		return T;
-=======
     private Node root;
     
     public BST() {
@@ -40,35 +19,10 @@ public class BST {
 		t = t.getLeft();
 	    } else {
 		return t;
->>>>>>> 092af50023d94c1b7a99c7814d65ce8c867d4024
 	    }
 	}
 	return null;
     }
-<<<<<<< HEAD
-
-    public void insert(Node t, Integer i) {
-	Node t = r;
-	Node newLeaf = new Node(i);
-        if (t == null)
-            t = newLeaf;
-        Node current = t;
-        Node piggy = null;
-        while (current != null){
-            piggy = current;
-            int c = current.getData().compareTo(i);
-            if (c < 0){
-                cur = cur.getLeft();
-            } else if (c > 0){
-                cur = cur.getRight();
-            }
-        }
-        if (i > piggy.getData())
-            piggy.setRight(newLeaf);
-        else if (i < piggy.getData())
-            piggy.setLeft(newLeaf);
-
-=======
     */
 
     //RECURSIVE VERSION
@@ -93,31 +47,11 @@ public class BST {
 
     public void insert(int i) {
 	//Insert as a new leaf
->>>>>>> 092af50023d94c1b7a99c7814d65ce8c867d4024
 	    //Create new node n
 	    //Search for the value of n but use a piggyback pointer
 	    //When lead pointer (T) gets to null, piggyback (T2) will be at the
          	//node before the insertion point
 	//Insert new node to the left or right of T2 as appropriate
-<<<<<<< HEAD
-    }
-
-    public String toString() {
-	String s = "" + r.getData() + "\n";
-	Node tmpLeft = r.getLeft();
-	Node tmpRight = r.getRight();
-	s = s + tmp.getData() + "\n";
-	while (tmp != null) {
-	    s = s + tmpLeft.getLeft().getData() + "   " + tmpLeft.getRight().getData() + "       " + tmpRight.getLeft().getData() + "   " + tmpRight.getRight().getData();
-	    tmpLeft = 
-	}
-    }
-
-    public static void main(String[] args) {
-	BST s = new BST(new Node(17));
-    }
-
-=======
 
         Node newLeaf = new Node(i);
         Node cur = root;
@@ -251,5 +185,4 @@ public class BST {
 	System.out.println(b.traverse(n));
     }
     
->>>>>>> 092af50023d94c1b7a99c7814d65ce8c867d4024
 }
