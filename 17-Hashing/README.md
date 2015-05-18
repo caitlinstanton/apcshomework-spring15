@@ -1,4 +1,5 @@
 <h1>Hashing/Hash Tables</h1>
+
 - We want to store things in a table by index (array)
   - Allows for constant time when finding, inserting, removing, etc.
 - We have to take a unique ID and convert it into a table index to store it
