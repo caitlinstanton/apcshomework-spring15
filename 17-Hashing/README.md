@@ -18,3 +18,17 @@
   - }
   - return h % table.size();
 - }
+
+<h2>Closed Hashing</h2>
+- Everything is stored in the array
+- If collisions occur, use any of the following methods:
+  - Rehashing
+  - Linear probing
+  - Leave space in the table using amultiplier
+- insert(), retrieval() --> O(1)
+
+<h2>Open Hashing</h2>
+- Each array element is a pointer to a linked list of values that hash that element
+- insert() --> O(1)
+- retrieval() --> [expected] O(1)
+  - O(n) with respect to the length (n) of teh linked list at the current location
