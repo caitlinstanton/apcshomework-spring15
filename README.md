@@ -1,2 +1,2 @@
-# apcshomework-spring15
-APCS Homework (Spring Semester 2015)
+AP CS Homework
+Assignments vary across object oriented data structures and programming concepts
